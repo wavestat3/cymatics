@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: cymatics
+Version: 0.1
+Requires-Dist: fastapi
+Requires-Dist: uvicorn
+Requires-Dist: sqlalchemy
+Requires-Dist: pygame
+Requires-Dist: numpy
+Requires-Dist: opencv-python
+Requires-Dist: python-dotenv

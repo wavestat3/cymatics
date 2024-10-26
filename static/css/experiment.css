@@ -1,0 +1,230 @@
+:root {
+    /* Colors */
+    --bg-primary: #1A1A1A;
+    --bg-card: #232323;
+    --accent-cyan: #00E7FF;
+    --accent-magenta: #FF00E7;
+    --accent-yellow: #FFE700;
+    --text-primary: #FFFFFF;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    
+    /* Shadows and Glows */
+    --glow-cyan: 0 0 20px rgba(0, 231, 255, 0.3);
+    --glow-magenta: 0 0 20px rgba(255, 0, 231, 0.3);
+    --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.experiment-container {
+    width: 100%;
+    max-width: 1600px;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+/* Camera Feed Section */
+.camera-section {
+    position: relative;
+    background: var(--bg-card);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+}
+
+.feed-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#cameraFeed {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: #000;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.frequency-display {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--accent-cyan);
+    text-shadow: var(--glow-cyan);
+}
+
+.unit {
+    font-size: 1.5rem;
+    opacity: 0.7;
+    margin-left: 0.5rem;
+}
+
+.timestamp {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+/* Control Section */
+.control-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.status-panel {
+    background: var(--bg-card);
+    border-radius: 24px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--card-shadow);
+}
+
+.experiment-status {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+}
+
+.timer {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--accent-magenta);
+    text-shadow: var(--glow-magenta);
+}
+
+.control-panel {
+    display: grid;
+    gap: 1rem;
+}
+
+button {
+    border: none;
+    border-radius: 12px;
+    padding: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.primary-button {
+    background: var(--accent-cyan);
+    color: var(--bg-primary);
+}
+
+.primary-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--glow-cyan);
+}
+
+.secondary-button {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border: 2px solid var(--accent-magenta);
+}
+
+.secondary-button:hover:not(:disabled) {
+    background: var(--accent-magenta);
+    transform: translateY(-2px);
+    box-shadow: var(--glow-magenta);
+}
+
+.next-button {
+    background: var(--accent-yellow);
+    color: var(--bg-primary);
+    font-size: 1.5rem;
+}
+
+.next-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(255, 231, 0, 0.3);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.preview-panel {
+    background: var(--bg-card);
+    border-radius: 24px;
+    padding: 1rem;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.captured-image {
+    width: 100%;
+    border-radius: 12px;
+    display: none;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes countdown {
+    from { transform: scale(1.5); opacity: 0; }
+    50% { transform: scale(1); opacity: 1; }
+    to { transform: scale(0.8); opacity: 0; }
+}
+
+.countdown {
+    animation: countdown 1s ease-out;
+}
+
+@keyframes recording-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 0, 231, 0.4); }
+    70% { box-shadow: 0 0 0 20px rgba(255, 0, 231, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 0, 231, 0); }
+}
+
+.recording {
+    animation: recording-pulse 2s infinite;
+}

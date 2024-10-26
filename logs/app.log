@@ -1,0 +1,51 @@
+2024-10-23 11:24:51,863 - backend.main - INFO - Pygame mixer initialized successfully
+2024-10-23 11:24:51,987 - backend.main - ERROR - Could not open camera
+2024-10-23 11:26:17,974 - backend.main - INFO - Pygame mixer initialized successfully
+2024-10-23 11:26:19,264 - backend.main - INFO - Camera initialized successfully
+2024-10-23 11:43:12,907 - backend.main - INFO - Pygame mixer initialized successfully
+2024-10-23 11:43:14,097 - backend.main - INFO - Camera initialized successfully
+2024-10-23 11:43:14,121 - backend.main - INFO - Application startup complete
+2024-10-23 11:51:41,944 - backend.main - INFO - Pygame mixer initialized successfully
+2024-10-23 11:51:43,036 - backend.main - INFO - Camera initialized successfully
+2024-10-23 11:51:43,050 - backend.main - INFO - Application startup complete
+2024-10-23 17:53:28,707 - backend.services.media_service - ERROR - Camera initialization failed: 'CAMERA_DEVICE_ID'
+2024-10-23 17:53:28,707 - backend.services.media_service - ERROR - Audio initialization failed: 'AUDIO_SAMPLE_RATE'
+2024-10-23 17:53:28,722 - backend.main - INFO - Application startup complete
+2024-10-23 17:53:50,686 - backend.services.media_service - ERROR - Camera initialization failed: 'CAMERA_DEVICE_ID'
+2024-10-23 17:53:50,686 - backend.services.media_service - ERROR - Audio initialization failed: 'AUDIO_SAMPLE_RATE'
+2024-10-23 17:53:50,694 - backend.main - INFO - Application startup complete
+2024-10-23 17:54:20,881 - backend.services.media_service - ERROR - Camera initialization failed: 'CAMERA_DEVICE_ID'
+2024-10-23 17:54:20,881 - backend.services.media_service - ERROR - Audio initialization failed: 'AUDIO_SAMPLE_RATE'
+2024-10-23 17:54:20,890 - backend.main - INFO - Application startup complete
+2024-10-23 17:54:38,891 - backend.main - ERROR - Error setting audio: 'AUDIO_SAMPLE_RATE'
+2024-10-23 17:54:41,553 - backend.main - ERROR - Error stopping audio: mixer not initialized
+2024-10-23 17:54:44,054 - backend.main - ERROR - Error setting audio: 'AUDIO_SAMPLE_RATE'
+2024-10-23 17:54:45,986 - backend.main - ERROR - Error stopping audio: mixer not initialized
+2024-10-23 17:56:36,197 - backend.services.media_service - ERROR - Camera initialization failed: 'CAMERA_DEVICE_ID'
+2024-10-23 17:56:36,197 - backend.services.media_service - ERROR - Audio initialization failed: 'AUDIO_SAMPLE_RATE'
+2024-10-23 17:56:36,217 - backend.main - INFO - Application startup complete
+2024-10-23 17:56:50,271 - backend.services.media_service - ERROR - Failed to initialize audio: 'SAMPLE_RATE'
+2024-10-23 17:56:51,280 - backend.services.media_service - INFO - Camera initialized successfully
+2024-10-23 17:56:51,295 - backend.main - INFO - Application startup complete
+2024-10-23 17:57:25,150 - backend.services.media_service - ERROR - Failed to initialize audio: 'SAMPLE_RATE'
+2024-10-23 17:57:25,715 - backend.services.media_service - INFO - Camera initialized successfully
+2024-10-23 17:57:25,725 - backend.main - INFO - Application startup complete
+2024-10-23 17:57:46,898 - backend.services.media_service - ERROR - Failed to initialize audio: 'SAMPLE_RATE'
+2024-10-23 17:57:47,343 - backend.services.media_service - INFO - Camera initialized successfully
+2024-10-23 17:57:47,353 - backend.main - INFO - Application startup complete
+2024-10-23 18:02:42,706 - backend.services.media_service - ERROR - Failed to initialize audio: 'SAMPLE_RATE'
+2024-10-23 18:02:43,192 - backend.services.media_service - INFO - Camera initialized successfully
+2024-10-23 18:03:02,506 - backend.services.media_service - ERROR - Failed to initialize audio: 'SAMPLE_RATE'
+2024-10-23 18:03:03,567 - backend.services.media_service - INFO - Camera initialized successfully
+2024-10-23 18:10:32,219 - backend.services.media_service - INFO - Audio system initialized successfully
+2024-10-23 18:10:33,344 - backend.services.media_service - INFO - Camera initialized successfully
+2024-10-23 18:10:33,360 - backend.main - INFO - Application startup complete
+2024-10-23 18:15:49,899 - backend.main - ERROR - Error setting audio: 'MediaService' object has no attribute 'generate_tone'
+2024-10-23 18:15:52,980 - backend.main - ERROR - Error setting audio: 'MediaService' object has no attribute 'generate_tone'
+2024-10-23 18:15:55,215 - backend.main - ERROR - Error setting audio: 'MediaService' object has no attribute 'generate_tone'
+2024-10-23 18:15:57,082 - backend.main - ERROR - Error setting audio: 'MediaService' object has no attribute 'generate_tone'
+2024-10-23 18:16:13,032 - backend.main - ERROR - Error setting audio: 'MediaService' object has no attribute 'generate_tone'
+2024-10-23 18:16:13,698 - backend.main - ERROR - Error setting audio: 'MediaService' object has no attribute 'generate_tone'
+2024-10-23 18:16:14,663 - backend.main - ERROR - Error setting audio: 'MediaService' object has no attribute 'generate_tone'
+2024-10-23 18:18:59,865 - backend.main - ERROR - Error setting audio: 'MediaService' object has no attribute 'generate_tone'
+2024-10-23 18:19:35,681 - backend.main - ERROR - Error setting audio: 'MediaService' object has no attribute 'generate_tone'

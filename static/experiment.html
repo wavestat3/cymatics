@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cymatics Experiment</title>
+    <link rel="stylesheet" href="css/experiment.css">
+</head>
+<body>
+    <div class="experiment-container">
+        <!-- Live Feed Section -->
+        <div class="camera-section">
+            <div class="feed-container">
+                <video id="cameraFeed" autoplay playsinline></video>
+                <div class="overlay">
+                    <div class="frequency-display">
+                        <span id="frequencyValue">440</span>
+                        <span class="unit">Hz</span>
+                    </div>
+                    <div class="timestamp" id="timestamp"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls Section -->
+        <div class="control-section">
+            <div class="status-panel">
+                <div class="experiment-status" id="statusDisplay">Ready to Begin</div>
+                <div class="timer" id="timer">20</div>
+            </div>
+
+            <div class="control-panel">
+                <button id="startButton" class="primary-button">
+                    <span class="icon">▶</span>
+                    Start Recording
+                </button>
+                <button id="stopButton" class="secondary-button" disabled>
+                    <span class="icon">■</span>
+                    Stop
+                </button>
+            </div>
+
+            <div class="preview-panel">
+                <img id="capturedImage" class="captured-image" style="display: none;">
+                <button id="nextButton" class="next-button" style="display: none;">
+                    Continue
+                    <span class="arrow">→</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/experiment-runner.js"></script>
+</body>
+</html>

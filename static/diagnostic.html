@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cymatics System Diagnostic</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f5f5f7;
+            color: #1d1d1f;
+        }
+        .diagnostic-panel {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-group {
+            margin: 15px 0;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        button {
+            background: #0071e3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0077ed;
+        }
+        .status {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 6px;
+            font-family: monospace;
+        }
+        .success { background: #e8f5e9; color: #1b5e20; }
+        .error { background: #ffebee; color: #b71c1c; }
+        .camera-feed {
+            width: 100%;
+            max-width: 640px;
+            margin: 10px 0;
+            background: #000;
+            border-radius: 8px;
+        }
+        pre {
+            background: #f8f8f8;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cymatics System Diagnostic</h1>
+
+    <div class="diagnostic-panel">
+        <h2>System Status</h2>
+        <pre id="systemStatus">Loading...</pre>
+        <button onclick="checkSystemStatus()">Refresh Status</button>
+    </div>
+
+    <div class="diagnostic-panel">
+        <h2>Audio System Test</h2>
+        <div class="test-group">
+            <h3>Simple Tone Test</h3>
+            <button onclick="playTestTone(440)">440 Hz</button>
+            <button onclick="playTestTone(432)">432 Hz</button>
+            <button onclick="stopAudio()">Stop</button>
+            <div id="audioStatus" class="status"></div>
+        </div>
+
+        <div class="test-group">
+            <h3>Waveform Test</h3>
+            <button onclick="testWaveform('sine')">Sine</button>
+            <button onclick="testWaveform('square')">Square</button>
+            <button onclick="testWaveform('triangle')">Triangle</button>
+            <button onclick="testWaveform('sawtooth')">Sawtooth</button>
+            <div id="waveformStatus" class="status"></div>
+        </div>
+    </div>
+
+    <div class="diagnostic-panel">
+        <h2>Camera System Test</h2>
+        <div class="test-group">
+            <h3>Camera Feed</h3>
+            <video id="cameraFeed" class="camera-feed" autoplay playsinline></video>
+            <button onclick="startCamera()">Start Camera</button>
+            <button onclick="stopCamera()">Stop Camera</button>
+            <button onclick="captureImage()">Capture Image</button>
+            <div id="cameraStatus" class="status"></div>
+        </div>
+        <div class="test-group">
+            <h3>Last Capture</h3>
+            <img id="lastCapture" class="camera-feed" style="display: none;">
+        </div>
+    </div>
+
+    <script>
+        // System Status
+        async function checkSystemStatus() {
+            try {
+                const response = await fetch('/');
+                const data = await response.json();
+                document.getElementById('systemStatus').textContent = 
+                    JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById('systemStatus').textContent = 
+                    `Error: ${error.message}`;
+            }
+        }
+
+        // Audio Functions
+        async function playTestTone(frequency) {
+            try {
+                const response = await fetch('/api/audio', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        frequency: frequency,
+                        volume: 0.9,
+                        waveform: 'sine'
+                    })
+                });
+                const data = await response.json();
+                document.getElementById('audioStatus').textContent = data.message;
+                document.getElementById('audioStatus').className = 
+                    'status ' + (data.status === 'success' ? 'success' : 'error');
+            } catch (error) {
+                document.getElementById('audioStatus').textContent = 
+                    `Error: ${error.message}`;
+                document.getElementById('audioStatus').className = 'status error';
+            }
+        }
+
+        async function testWaveform(waveform) {
+            try {
+                const response = await fetch('/api/audio', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        frequency: 440,
+                        volume: 0.9,
+                        waveform: waveform
+                    })
+                });
+                const data = await response.json();
+                document.getElementById('waveformStatus').textContent = data.message;
+                document.getElementById('waveformStatus').className = 
+                    'status ' + (data.status === 'success' ? 'success' : 'error');
+            } catch (error) {
+                document.getElementById('waveformStatus').textContent = 
+                    `Error: ${error.message}`;
+                document.getElementById('waveformStatus').className = 'status error';
+            }
+        }
+
+        async function stopAudio() {
+            try {
+                const response = await fetch('/api/stop', { method: 'POST' });
+                const data = await response.json();
+                document.getElementById('audioStatus').textContent = data.message;
+                document.getElementById('audioStatus').className = 
+                    'status ' + (data.status === 'success' ? 'success' : 'error');
+            } catch (error) {
+                document.getElementById('audioStatus').textContent = 
+                    `Error: ${error.message}`;
+                document.getElementById('audioStatus').className = 'status error';
+            }
+        }
+
+        // Camera Functions
+        async function startCamera() {
+            try {
+                const video = document.getElementById('cameraFeed');
+                const stream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { width: 1280, height: 720 } 
+                });
+                video.srcObject = stream;
+                document.getElementById('cameraStatus').textContent = 'Camera started';
+                document.getElementById('cameraStatus').className = 'status success';
+            } catch (error) {
+                document.getElementById('cameraStatus').textContent = 
+                    `Error: ${error.message}`;
+                document.getElementById('cameraStatus').className = 'status error';
+            }
+        }
+
+        function stopCamera() {
+            const video = document.getElementById('cameraFeed');
+            const stream = video.srcObject;
+            if (stream) {
+                const tracks = stream.getTracks();
+                tracks.forEach(track => track.stop());
+                video.srcObject = null;
+                document.getElementById('cameraStatus').textContent = 'Camera stopped';
+                document.getElementById('cameraStatus').className = 'status success';
+            }
+        }
+
+        async function captureImage() {
+            try {
+                const response = await fetch('/api/capture', { method: 'POST' });
+                const data = await response.json();
+                if (data.status === 'success') {
+                    const img = document.getElementById('lastCapture');
+                    img.src = data.image_path;
+                    img.style.display = 'block';
+                }
+                document.getElementById('cameraStatus').textContent = data.message;
+                document.getElementById('cameraStatus').className = 
+                    'status ' + (data.status === 'success' ? 'success' : 'error');
+            } catch (error) {
+                document.getElementById('cameraStatus').textContent = 
+                    `Error: ${error.message}`;
+                document.getElementById('cameraStatus').className = 'status error';
+            }
+        }
+
+        // Initialize
+        checkSystemStatus();
+    </script>
+</body>
+</html>

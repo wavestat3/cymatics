@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cymatics Explorer</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/frequency-selector.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="main-card">
+            <!-- Frequency Display -->
+            <div class="frequency-display">
+                <div class="value-container">
+                    <span class="value" id="frequencyValue">440</span>
+                    <span class="unit">Hz</span>
+                </div>
+                <div class="status-indicator" id="frequencyStatus">
+                    Unexplored Frequency
+                </div>
+            </div>
+
+            <!-- Interactive Dial -->
+            <div class="dial-container">
+                <div class="dial-visualization">
+                    <canvas id="dialCanvas"></canvas>
+                    <div class="dial-overlay">
+                        <div class="dial-marker"></div>
+                    </div>
+                </div>
+                <div class="dial-controls">
+                    <input type="range" 
+                           id="frequencyInput" 
+                           min="20" 
+                           max="2000" 
+                           step="0.1" 
+                           value="440">
+                </div>
+            </div>
+
+            <!-- Waveform Display -->
+            <div class="waveform-container">
+                <canvas id="waveformCanvas"></canvas>
+                <div class="waveform-controls">
+                    <button class="waveform-btn active" data-type="sine">
+                        <span class="icon">～</span>
+                        <span class="label">Sine</span>
+                    </button>
+                    <button class="waveform-btn" data-type="square">
+                        <span class="icon">⊓</span>
+                        <span class="label">Square</span>
+                    </button>
+                    <button class="waveform-btn" data-type="triangle">
+                        <span class="icon">Λ</span>
+                        <span class="label">Triangle</span>
+                    </button>
+                    <button class="waveform-btn" data-type="sawtooth">
+                        <span class="icon">⋀</span>
+                        <span class="label">Sawtooth</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Action Controls -->
+            <div class="action-controls">
+                <button class="preview-btn" id="previewBtn">
+                    <span class="icon">▶</span>
+                    <span class="label">Preview</span>
+                </button>
+                <button class="random-btn" id="randomBtn">
+                    <span class="icon">🎲</span>
+                    <span class="label">Random</span>
+                </button>
+                <button class="start-btn" id="startBtn">
+                    Begin Experiment
+                </button>
+            </div>
+        </div>
+
+        <!-- History Visualization -->
+        <div class="history-card">
+            <h3>Frequency Exploration History</h3>
+            <canvas id="historyCanvas"></canvas>
+        </div>
+    </div>
+
+    <script src="js/audio-engine.js"></script>
+    <script src="js/visualizers.js"></script>
+    <script src="js/frequency-selector.js"></script>
+</body>
+</html>

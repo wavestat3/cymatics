@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+sqlalchemy
+pygame
+numpy
+opencv-python
+python-dotenv

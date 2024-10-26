@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save Your Cymatics Creation</title>
+    <link rel="stylesheet" href="css/collection.css">
+</head>
+<body>
+    <div class="collection-container">
+        <div class="result-panel">
+            <h2>Your Cymatics Pattern</h2>
+            <div class="image-preview">
+                <img id="resultImage" src="" alt="Your cymatics pattern">
+                <div class="frequency-overlay">
+                    <span id="frequencyValue">440</span>
+                    <span class="unit">Hz</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-panel">
+            <h2>Save Your Creation</h2>
+            <form id="collectionForm" class="collection-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="contact-section">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" 
+                               placeholder="For receiving your creation">
+                    </div>
+
+                    <div class="separator">OR</div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" 
+                               placeholder="For SMS delivery">
+                    </div>
+                </div>
+
+                <div class="form-group checkbox">
+                    <label>
+                        <input type="checkbox" id="optIn" name="optIn">
+                        Keep me updated about future cymatics experiments
+                    </label>
+                </div>
+
+                <div class="download-options">
+                    <label>Send me:</label>
+                    <div class="option-group">
+                        <label>
+                            <input type="checkbox" name="sendImage" checked>
+                            Image
+                        </label>
+                        <label>
+                            <input type="checkbox" name="sendVideo">
+                            Video
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="primary-button">
+                        <span class="icon">✉️</span>
+                        Send My Creation
+                    </button>
+                    <button type="button" id="downloadBtn" class="secondary-button">
+                        <span class="icon">⬇️</span>
+                        Download Now
+                    </button>
+                </div>
+            </form>
+
+            <div id="successMessage" class="success-message" style="display: none;">
+                <h3>🎉 Creation Saved!</h3>
+                <p>Check your email/phone for your cymatics pattern.</p>
+                <button id="newExperimentBtn" class="accent-button">
+                    Create Another Pattern
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/collection-handler.js"></script>
+</body>
+</html>
